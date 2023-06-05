@@ -10,4 +10,9 @@ router.get("/sign-up", function (req, res, next) {
   res.render("sign-up-form");
 });
 
+// router.post("/sign-up" async(req,res,next)=>{
+//   try{
+//     const user = new User({})
+//   }
+// })
 module.exports = router;
