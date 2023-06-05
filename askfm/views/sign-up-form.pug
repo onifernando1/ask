@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1 sign up form 
-  p Welcome
+ 
+ form(action="" method="post")
+    label(for="username") Username: 
+    input(type="text" id="name" name="name")
+     label(for="password") Password: 
+    input(type="text" id="password" name="password")
+    button(type="submit") Submit
