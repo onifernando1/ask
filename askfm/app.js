@@ -49,7 +49,7 @@ app.use(function (err, req, res, next) {
 
 //mongoose and passport
 
-const mongoDb = "YOUR MONGO URL HERE";
+const mongoDb = process.env.SECRET_KEY;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));

@@ -18,7 +18,7 @@ router.post("/sign-up", async (req, res, next) => {
       password: req.body.password,
     });
     const result = await user.save();
-    res.redirect("/");
+    res.redirect("/sign-up");
   } catch (err) {
     return next(err);
   }
