@@ -44,6 +44,8 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
+  // print error stack trace
+  console.error(err.stack);
 
   // render the error page
   res.status(err.status || 500);
@@ -77,6 +79,10 @@ passport.use(
   })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
+
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
@@ -90,7 +96,4 @@ passport.deserializeUser(async function (id, done) {
   }
 });
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
 module.exports = app;
