@@ -6,13 +6,15 @@ const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const User = require("./models/userModel");
 
 const app = express();
 
 require("dotenv").config();
 
-const session = require("express-session");
 const passport = require("passport");
+const session = require("express-session");
+
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
@@ -26,6 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -86,7 +90,6 @@ passport.deserializeUser(async function (id, done) {
   }
 });
 
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));

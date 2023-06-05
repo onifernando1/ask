@@ -1,6 +1,7 @@
 var express = require("express");
 const User = require("../models/userModel");
 var router = express.Router();
+const passport = require("passport");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -32,7 +33,7 @@ router.post(
   "/log-in",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/",
+    failureRedirect: "/users/log-in",
   })
 );
 module.exports = router;
