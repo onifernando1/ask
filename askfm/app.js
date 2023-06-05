@@ -9,11 +9,14 @@ const usersRouter = require("./routes/users");
 
 const app = express();
 
-// const session = require("express-session");
-// const passport = require("passport");
-// const LocalStrategy = require("passport-local").Strategy;
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
+require("dotenv").config();
+
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+// const User = require("./models/userModel");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -46,22 +49,14 @@ app.use(function (err, req, res, next) {
 
 //mongoose and passport
 
-// const mongoDb = "YOUR MONGO URL HERE";
-// mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "mongo connection error"));
+const mongoDb = "YOUR MONGO URL HERE";
+mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "mongo connection error"));
 
-// const User = mongoose.model(
-//   "User",
-//   new Schema({
-//     username: { type: String, required: true },
-//     password: { type: String, required: true },
-//   })
-// );
-
-// app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(express.urlencoded({ extended: false }));
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
 
 module.exports = app;
