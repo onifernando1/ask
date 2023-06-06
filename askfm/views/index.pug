@@ -4,5 +4,6 @@ block content
   h1= title
   if user 
     p Welcome #{user.username}
+    a.btn(href="/users/log-out") Log out 
   else 
-    p hey
+    p Please log in 

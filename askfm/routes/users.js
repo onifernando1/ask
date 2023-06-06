@@ -36,4 +36,14 @@ router.post(
     failureRedirect: "/users/log-in",
   })
 );
+
+router.get("/log-out", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
 module.exports = router;
