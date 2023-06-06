@@ -2,6 +2,7 @@ var express = require("express");
 const User = require("../models/userModel");
 var router = express.Router();
 const passport = require("passport");
+const bcrypt = require("bcrypt");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -14,9 +15,18 @@ router.get("/sign-up", function (req, res, next) {
 
 router.post("/sign-up", async (req, res, next) => {
   try {
+    const hashedPassword = await new Promise((resolve, reject) => {
+      bcrypt.hash(req.body.password, 10, (err, hashed) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(hashed);
+      });
+    });
+
     const user = new User({
       username: req.body.username,
-      password: req.body.password,
+      password: hashedPassword,
     });
     const result = await user.save();
     res.redirect("/");

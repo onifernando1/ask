@@ -54,6 +54,15 @@ passport.deserializeUser(async function (id, done) {
   }
 });
 
+// new addition
+
+// app.use(function (req, res, next) {
+//   res.locals.currentUser = req.user;
+//   next();
+// });
+
+//
+
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
