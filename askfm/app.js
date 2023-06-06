@@ -68,26 +68,20 @@ passport.deserializeUser(async function (id, done) {
   }
 });
 
-// new addition
-
-// app.use(function (req, res, next) {
-//   res.locals.currentUser = req.user;
-//   next();
-// });
-
-//
-
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(logger("dev"));
-
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
