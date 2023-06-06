@@ -3,7 +3,7 @@ var router = express.Router();
 const User = require("../models/userModel");
 
 router.get("/new", function (req, res, next) {
-  res.render("index");
+  res.render("new-post-form");
 });
 
 module.exports = router;
