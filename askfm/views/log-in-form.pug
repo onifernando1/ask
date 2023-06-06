@@ -1,6 +1,10 @@
 extends layout
 
 block content
+
+ include navbar
+
+
  
  form(action="/users/log-in" method="POST")
     label(for="username") Username: 

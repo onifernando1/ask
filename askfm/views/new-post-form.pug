@@ -2,6 +2,9 @@ extends layout
 
 block content
 
+ include navbar
+
+
  
  form(action="/posts/new" method="POST")
     input(type="hidden" id="username" name="username" value=`${user._id}`)
