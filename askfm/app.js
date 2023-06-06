@@ -11,6 +11,7 @@ const mongoose = require("mongoose");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const User = require("./models/userModel");
+const bcrypt = require("bcrypt");
 
 //mongoose
 
@@ -28,13 +29,25 @@ passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
       const user = await User.findOne({ username: username });
+
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password" });
+
+      const passwordMatch = await new Promise((resolve, reject) => {
+        bcrypt.compare(password, user.password, (err, res) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(res);
+          }
+        });
+      });
+
+      if (passwordMatch) {
+        return done(null, user);
       }
-      return done(null, user);
+      return done(null, false, { message: "Incorrect password" });
     } catch (err) {
       return done(err);
     }
