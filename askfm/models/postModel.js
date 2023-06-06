@@ -6,3 +6,5 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   information: String,
 });
+
+module.exports = Post;
