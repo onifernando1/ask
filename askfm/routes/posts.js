@@ -9,6 +9,8 @@ const post_controller = require("../controllers/postController");
 //   res.render("new-post-form", { user: res.locals.currentUser });
 // });
 
+router.get("/list", post_controller.post_list);
+
 router.get("/new", post_controller.post_create_get);
 
 router.post("/new", post_controller.post_create_post);

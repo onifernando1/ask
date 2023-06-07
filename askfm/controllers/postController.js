@@ -4,12 +4,13 @@ const asyncHandler = require("express-async-handler");
 // Display list of all posts
 
 exports.post_list = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: Post list");
+  const allPosts = await Post.find({}).populate("author");
+  res.render("posts-list", { allPosts: allPosts });
 });
 
 // //Display specific post
 // exports.post_detail = asyncHandler(async(req, res, next)={
-//     res.send(`NOT IMPLEMENTED: Post detail: ${req.params.id}`);
+//     res.render("showpost")
 // });
 
 //Handle Post create form GET
