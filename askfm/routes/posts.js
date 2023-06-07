@@ -11,18 +11,6 @@ const post_controller = require("../controllers/postController");
 
 router.get("/new", post_controller.post_create_get);
 
-router.post("/new", async function (req, res, next) {
-  try {
-    const post = new Post({
-      author: req.body.username,
-      information: req.body.information,
-    });
-
-    await post.save();
-    res.redirect("/");
-  } catch (error) {
-    next(error);
-  }
-});
+router.post("/new", post_controller.post_create_post);
 
 module.exports = router;

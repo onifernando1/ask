@@ -18,9 +18,19 @@ exports.post_create_get = asyncHandler(async (req, res, next) => {
 });
 
 //Handle Post create
-exports.post_create_post = asyncHandler(async (req, res, next) => {
-  res.send("Not implemented: Post create POST");
-});
+exports.post_create_post = async function (req, res, next) {
+  try {
+    const post = new Post({
+      author: req.body.username,
+      information: req.body.information,
+    });
+
+    await post.save();
+    res.redirect("/");
+  } catch (error) {
+    next(error);
+  }
+};
 
 //Handle Post delete form
 exports.post_delete_get = asyncHandler(async (req, res, next) => {
