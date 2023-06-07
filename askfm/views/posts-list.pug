@@ -4,10 +4,20 @@ block content
 
  link(rel='stylesheet', href='../stylesheets/posts-list.css')
 
- .new-post-link What is happening?
+ .posts-list-container
 
- .posts-container
-  each post in allPosts
-   .individual-post-container
-    .username @#{post.author.username}
-    .information #{post.information}
+  .phone-container
+
+   .three-dots 
+    .dot 
+    .dot  
+    .dot  
+
+   .new-post-link 
+    a(href="/posts/new") What is happening?
+
+   .posts-container
+    each post in allPosts
+     .individual-post-container
+      .username @#{post.author.username}
+      .information #{post.information}
