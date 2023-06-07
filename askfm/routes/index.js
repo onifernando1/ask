@@ -4,7 +4,7 @@ const User = require("../models/userModel");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { user: req.user });
+  res.redirect("/posts/list");
 });
 
 module.exports = router;
