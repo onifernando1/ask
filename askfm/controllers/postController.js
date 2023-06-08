@@ -5,10 +5,13 @@ const asyncHandler = require("express-async-handler");
 
 exports.post_list = asyncHandler(async (req, res, next) => {
   const allPosts = await Post.find({}).populate("author");
-  res.render("posts-list", {
-    allPosts: allPosts,
-    user: res.locals.currentUser,
-  });
+  if (res.locals.currentUser) {
+    res.render("posts-list", {
+      allPosts: allPosts,
+      user: res.locals.currentUser,
+    });
+  }
+  res.redirect("/users/log-in");
 });
 
 // //Display specific post
