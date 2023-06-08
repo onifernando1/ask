@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(23, 117, 248);
 }
 
 a {
@@ -9,10 +10,11 @@ a {
 
 .posts-list-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(23, 117, 248);
+  /* background-color: rgb(23, 117, 248); */
+  width: 100vw;
+  height: 100vh;
 }
 
 .new-post-link {
@@ -25,22 +27,26 @@ a {
 
 .posts-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: auto;
+  height: 40rem;
+  width: 30rem;
+  padding: 10px;
 }
 
 .individual-post-container {
   /* background-color: red; */
-  height: 100%;
+  height: 110%;
   width: 20em;
   padding: 10px;
   margin-bottom: 5px;
   overflow-wrap: break-word;
   font-size: 1.3em;
-  outline: 1px solid;
-  outline-color: rgb(227, 227, 227);
-  border-radius: 20px 20px 20px 3px;
+  outline: 3px solid;
+  outline-color: black;
+  border-radius: 20px 20px 20px 0px;
+  margin-bottom: 20px;
 }
 
 .username {
@@ -48,11 +54,13 @@ a {
 }
 
 .phone-container {
+  margin-top: 20px;
   background-color: white;
   outline: 4px solid;
   outline-color: black;
   border-radius: 80px;
-  width: 30em;
+  width: 30rem;
+  height: 50rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,4 +78,28 @@ a {
   height: 15px;
   width: 15px;
   border-radius: 100px;
+}
+
+.new-post-form > input {
+  width: 17rem;
+  height: 2rem;
+  border: 3px solid;
+  border-radius: 20px 20px 20px 0px;
+  padding: 10px;
+  font-size: 1.3em;
+}
+
+.new-post-form > button {
+  width: 4rem;
+  height: 2rem;
+  border: 3px solid;
+  background-color: white;
+  font-size: 1.3em;
+  margin-left: 15px;
+}
+
+.new-post-form-container {
+  height: 2rem;
+  width: 25rem;
+  margin-left: 8px;
 }
