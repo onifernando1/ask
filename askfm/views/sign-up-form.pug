@@ -6,24 +6,26 @@ block content
  link(rel='stylesheet', href='../stylesheets/sign-up.css')
 
 
+ .sign-up-page-container
  
+  .phone-container
+   .three-dots 
+    .dot 
+    .dot  
+    .dot  
 
- 
- .phone-container
-  .three-dots 
-   .dot 
-   .dot  
-   .dot  
-  .sign-up-container
-   form(action="/users/sign-up" method="POST")
-    .username
-     label(for="username") Username: 
-     input(type="text" id="username" name="username")
-    .password 
-     label(for="password") Password: 
-     input(type="text" id="password" name="password")
-   
+   .sign-up-container
+    .sign-up-title 
+      h3 Sign up 
+    form(action="/users/sign-up" method="POST")
+     .username
+      label(for="username") Username: 
+      input(type="text" id="username" name="username")
+     .password 
+      label(for="password") Password: 
+      input(type="text" id="password" name="password")
     
-    button(type="submit") Sign up
-   
-    a(href="/users/log-in") Log in 
+    .sign-up-log-in-container 
+     button(type="submit") Sign up
+     
+     a(href="/users/log-in") Log in 
