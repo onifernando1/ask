@@ -14,7 +14,7 @@ block content
     .dot  
 
    .new-post-link 
-    a(href="/posts/new") What is happening?
+    a(href="/users/log-in-form") What is happening?
 
    .posts-container
     each post in allPosts
@@ -24,6 +24,7 @@ block content
     
    .new-post-form-container
        form(action="/posts/new" method="POST" class="new-post-form")
+           input(type="hidden" id="username" name="username" value=`${user._id}`)
            input(type="text" id="information" name="information" placeholder="Write a message") 
            button(type="submit") Send
 
